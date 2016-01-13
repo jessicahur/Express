@@ -1,0 +1,22 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp testing"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicahur/Express.git"
+  },
+  "author": "Jessica Hur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jessicahur/Express/issues"
+  },
+  "homepage": "https://github.com/jessicahur/Express#readme"
+}
