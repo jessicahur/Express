@@ -73,7 +73,7 @@ describe('EXPRESS Server With Simple Persistence', function() {
             filesList.forEach(function(fileName, index) {
               var name = parseInt(fileName.split('.')[0]);
               filesList[index] = name;
-            })
+            });
 
             filesList.sort(compare);
 

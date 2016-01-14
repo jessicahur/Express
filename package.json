@@ -1,10 +1,14 @@
 {
   "name": "express",
   "version": "1.0.0",
+  "dependencies": {
+    "express": "^3.3.12",
+    "body-parser": "^3.3.12"
+  },
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "test": "gulp testing"
   },
   "scripts": {
     "test": "gulp testing"
@@ -18,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/jessicahur/Express/issues"
   },
-  "homepage": "https://github.com/jessicahur/Express#readme"
+  "homepage": "https://github.com/jessicahur/Express#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.3.4",
+    "nodemon": "^1.8.1"
+  }
 }
