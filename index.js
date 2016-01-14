@@ -1,5 +1,5 @@
-var app = require('./lib/app');
+var app = require('./app');
 
 app.listen(9000, function() {
-  console.log('Server has started. Listening on port 9000....');
+  console.log('Server started, listening on port 9000');
 });

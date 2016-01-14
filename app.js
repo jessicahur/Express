@@ -4,7 +4,17 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var dataStorage = '../dataStorage/';
+var dataStorage = 'dataStorage/';
+
+function compare(a, b) {
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
+}
 
 app.use(bodyParser.json());
 
@@ -17,6 +27,7 @@ app.get('/notes*', function (req, res) {
         return console.log('Cannot read directory of dataStorage: ',err.message);
       }
       res.send('Files in data storage: '+filesList.join(', '));
+      // res.json(filesList);
     });
   }
 
@@ -70,7 +81,14 @@ app.post('/notes', function (req, res) {
 
       //if there are json files in storage
       else {
-        fileName = parseInt(filesList[filesList.length-1].split('.')[0]);
+        filesList = filesList.splice(1);
+        filesList.forEach(function(fileName, index){
+          var name = parseInt(fileName.split('.')[0]);
+          filesList[index] = name;
+        });
+        filesList.sort(compare);
+
+        fileName = filesList[filesList.length-1];
         fileName++;
         fileName = fileName.toString()+'.json';
 
@@ -81,11 +99,9 @@ app.post('/notes', function (req, res) {
           }
           res.send('SUCCESS! Data written to server storage: '+ dataBody+' in '+fileName);
         });
-      }
-    });
+}
+});
 });
 
-app.listen(9000, function() {
-  console.log('Server started, listening on port 9000');
-});
-// module.exports = app;
+
+module.exports = app;
