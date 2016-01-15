@@ -49,7 +49,6 @@ router.get('/:file', function(req, res, next) {
 //POST
 router.post('/',function(req, res, next) {
   var dataBody = JSON.stringify(req.body);
-  console.log(dataBody);
 
   fs.readdir(dataStorage, function (err, filesList) {
     if (err) return console.log('Cannot read directory of dataStorage: ',err.message);
@@ -74,7 +73,6 @@ router.post('/',function(req, res, next) {
 
       //if there are json files in storage
       else {
-        console.log(filesList);
         fileName = ++filesList.length;
         fileName = fileName.toString()+'.json';
 
