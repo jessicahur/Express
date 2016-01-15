@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
         res.send('Cannot get notes list. Try again later.');
         return console.log('Cannot read directory of dataStorage: ',err.message);
       }
+      filesList = filesList.splice(1);
       res.send('Files in data storage: '+filesList.join(', '));
     });
 });
