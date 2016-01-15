@@ -11,7 +11,8 @@
     "test": "gulp testing"
   },
   "scripts": {
-    "test": "gulp testing"
+    "test": "gulp testing",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
