@@ -5,10 +5,6 @@ var router = express.Router();
 
 var dataStorage = 'dataStorage/';
 
-function compare(a, b) {
-  return a-b;
-}
-
 router.use(bodyParser.json());
 
 //GENERAL GET
@@ -58,8 +54,12 @@ router.post('/',function(req, res, next) {
   fs.readdir(dataStorage, function (err, filesList) {
     if (err) return console.log('Cannot read directory of dataStorage: ',err.message);
 
+      filesList = filesList.filter(function(file){
+          return file.charAt(0) !== '.';
+      });
+
       //if there is no json in data storage
-      if (filesList.length === 1) { //annoying .DS_Store
+      if (filesList.length === 0) { //annoying .DS_Store
         var fileName = '1.json';
 
         fs.writeFile(dataStorage+fileName, dataBody, function(err) {
@@ -74,15 +74,8 @@ router.post('/',function(req, res, next) {
 
       //if there are json files in storage
       else {
-        filesList = filesList.splice(1);
-        filesList.forEach(function(fileName, index){
-          var name = parseInt(fileName.split('.')[0]);
-          filesList[index] = name;
-        });
-        filesList.sort(compare);
-
-        fileName = filesList[filesList.length-1];
-        fileName++;
+        console.log(filesList);
+        fileName = ++filesList.length;
         fileName = fileName.toString()+'.json';
 
         fs.writeFile(dataStorage+fileName, dataBody, function(err) {
