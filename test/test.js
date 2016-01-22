@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 describe('EXPRESS Server With Simple Persistence', function() {
 
   before((done) => {
-    mkdirp('/dataStorage', function (err) {
+    mkdirp('./dataStorage', function (err) {
     if (err) {
       console.error(err);
     }
