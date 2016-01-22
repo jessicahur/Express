@@ -12,15 +12,16 @@ chai.use(chaiHttp);
 
 describe('EXPRESS Server With Simple Persistence', function() {
 
-  before((done) => {
+  before( done => {
     mkdirp('./dataStorage', function (err) {
-    if (err) {
-      console.error(err);
-    }
-    else {
-      console.log('created dataStorage!');
-      done();
-    }
+      if (err) {
+        done(err);
+      }
+      else {
+        console.log('created dataStorage!');
+        done();
+      }
+    });
   });
 
   it('should send back a list of files in dataStorage for GET /notes', function(done) {
